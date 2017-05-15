@@ -12,22 +12,18 @@ import javax.swing.*;
 
 import testProject.*;
 
-public class SquareNode implements Node {
+public class OrGate implements Node {
 
 	int draggedAtX,draggedAtY;
-	public SquareNode(Color aColor) {
-
+	public OrGate(Color aColor) {
 		size = DEFAULT_SIZE;
 		x = 0;
 		y = 0;
-		color = aColor;
-	
-		 
+		color = aColor;	 
 	}
-
-	
-
-
+	public String getType(){
+		return "OrGate";
+	}
 	public double getX(){
 		return x;
 	}
@@ -76,15 +72,6 @@ public class SquareNode implements Node {
 	public boolean contains(Point2D thePoint) {
 		Rectangle2D square = new Rectangle2D.Double(x, y, size, size);
 		return square.contains(thePoint);
-	}
-
-
-
-
-	@Override
-	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	

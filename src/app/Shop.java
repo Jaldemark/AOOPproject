@@ -6,11 +6,12 @@ import testProject.Node;
 
 public class Shop {
 
-	static String[] s = {"Boards: ", "Wires: "};
-	static int[] itemCount = new int[10];//Array with amount of items
-	static int count=0;
-	static int currentSize=0;	//How many different items there are
-
+	static String[] s = {"And Gates: ", "Or Gates: "};
+	static int[] itemCount = {0,0};//Array with amount of items
+	static int orCount=0;
+	static int currentSize=1;	//How many different items there are
+	static int andCount=0;
+	static int count;
 
 	/**
 	 * Add Items to the shop
@@ -18,34 +19,32 @@ public class Shop {
 	 */
 	public static void addToShop(Node a){
 		
-		for(int i=0;i<s.length;i++){
-			switch(i){
-			case 0: itemCount[i] =itemCount[i]+ a.getBoard().get();
-					s[i] = "Boards: " + itemCount[i];
-					
+		
+			switch(a.getType()){
+				case "AndGate":	andCount++; 
+								setShop(andCount, orCount);
 					break;
-			case 1: itemCount[i] = itemCount[i] + a.getWire().get();
-					s[i] = "Wires: " + itemCount[i];
-					
+				case "OrGate": 	orCount++;
+								setShop(andCount,orCount);
 					break;
 			}
 				
-		}
+		
 	
 	}
+	/**
+	 * Remove the node that got removed from the shop
+	 * @param The node which got removed
+	 */
 	public static void removeFromShop(Node a){
 		
-		for(int i=0;i<s.length;i++){
-			switch(i){
-			case 0: itemCount[i] =itemCount[i]- a.getBoard().get();
-					s[i] = "Boards: " + itemCount[i];
-					
-					break;
-			case 1: itemCount[i] = itemCount[i] - a.getWire().get();
-					s[i] = "Wires: " + itemCount[i];
-					
-					break;
-			}	
+		switch(a.getType()){
+		case "AndGate": andCount--;
+						setShop(andCount, orCount);
+						break;
+		case "OrGate": 	orCount--;
+						setShop(andCount, orCount);
+						break;
 		}
 	}
 	/**
@@ -63,11 +62,22 @@ public class Shop {
 		}
 		return all;
 	}
-	
-	public static void clearShop(){
-		
-		for(int i=0;i<s.length;i++){
-			itemCount[i]=0;
+	public static void setShop(int and, int or){
+		if(and==0 && or==0){
+			andCount=0;
+			orCount=0;
 		}
+		for(int i=0;i<s.length;i++){
+			switch(i){
+				case 0: 
+						s[0]="And Gate: " + and;
+					
+				case 1:	
+						s[1]="Or Gates: " + or;
+			}
+		}
+	}
+	public static void clearShop(){
+		 setShop(0,0);
 	}
 }
