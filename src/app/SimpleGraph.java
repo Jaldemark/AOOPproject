@@ -7,7 +7,7 @@ import testProject.*;
 
 public class SimpleGraph extends Graph {
 	public Node[] getNodePrototypes() {
-		Node[] nodeTypes = { new TriangleNode(Color.GREEN), new CircleNode(Color.BLACK), new CircleNode(Color.WHITE), new SquareNode(Color.BLUE) };
+		Node[] nodeTypes = { new AndGate(Color.GREEN), new OrGate(Color.BLUE) };
 		return nodeTypes;
 	}
 }

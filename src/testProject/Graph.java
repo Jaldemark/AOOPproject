@@ -64,6 +64,24 @@ public abstract class Graph {
 		nodes.remove(theNode);
 		
 	}
+	public void deleteAll(){
+		int sizeOfNodes = nodes.size();
+		while(nodes.size()!=0){
+			nodes.remove(nodes.get(0));//removes first in the list
+		}
+	}
+	public boolean checkOverPrint(Node a){
+		Node newNode;
+		Rectangle2D bounds;
+		for(int i=0;i<nodes.size();i++){
+			newNode = nodes.get(i);
+			bounds = newNode.getBounds();
+			
+		return true;	
+		}
+			return false;
+				
+	}
 
 
 	

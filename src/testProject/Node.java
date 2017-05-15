@@ -1,15 +1,11 @@
 package testProject;
 
 import java.awt.*;
-import java.awt.geom.*;
 
-import app.Board;
-import app.Wire;
+import java.awt.geom.*;
 
 public interface Node extends Cloneable {
 
-	Board getBoard();
-	Wire getWire();
 	void draw(Graphics2D g2);
 
 	void translate(double dx, double dy);
@@ -18,9 +14,9 @@ public interface Node extends Cloneable {
 
 	Object clone();
 	boolean contains(Point2D aPoint);
-	//Object getArea();
 	void setX(double x);
 	void setY(double y);
 	double getX();
 	double getY();
+	String getType();
 }

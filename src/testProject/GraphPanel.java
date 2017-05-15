@@ -2,7 +2,8 @@ package testProject;
 
 import java.awt.*;
 
-import app.Board;
+
+
 import app.Shop;
 
 import java.awt.geom.*;
@@ -11,7 +12,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import app.Shop;
-import app.TriangleNode;
+
 
 public class GraphPanel extends JComponent {
 	private Graph graph;
@@ -45,18 +46,40 @@ public class GraphPanel extends JComponent {
 					else
 						clickedObject = null;
 				}
-				else if (tool != null&&event.getButton()!=MouseEvent.BUTTON3) {
+				else /*if (tool != null)*/ {
 					Node prototype = (Node) tool;
 					Node newNode = (Node) prototype.clone();
-					if(theNode==null){
+					if(theNode==null&&!SwingUtilities.isRightMouseButton(event)){
 						graph.add(newNode, mousePoint);	
 						Shop.addToShop(newNode);
 						GraphFrame.theArea.setText(Shop.getShop());
 					}
-					
+
 					repaint();
 				}
-				if((event.getButton()==MouseEvent.BUTTON3)&&theNode!=null){
+				if(theNode==null&&SwingUtilities.isRightMouseButton(event)) {
+					JPopupMenu pMenu = new JPopupMenu();
+					JMenuItem delete = new JMenuItem("Delete all");
+					
+					delete.addActionListener(new
+							ActionListener()
+					{
+						public void actionPerformed(ActionEvent event)
+						{
+							Shop.clearShop();
+							GraphFrame.theArea.setText(Shop.getShop());
+							graph.deleteAll();
+							repaint();
+						}
+						
+						
+					});
+					
+					pMenu.add(delete);
+					pMenu.show(GraphPanel.this, event.getX(), event.getY());
+				}
+				
+				else if((SwingUtilities.isRightMouseButton(event))&&theNode!=null){
 					clickedObject=theNode;
 					JPopupMenu pMenu = new JPopupMenu();
 					JMenuItem delete = new JMenuItem("Delete");
@@ -76,6 +99,8 @@ public class GraphPanel extends JComponent {
 					pMenu.show(GraphPanel.this, event.getX(), event.getY());
 					
 				}
+				
+				
 			}
 				public void mouseReleased(MouseEvent event){
 					Object tool = toolBar.getSelectedTool();
@@ -97,7 +122,7 @@ public class GraphPanel extends JComponent {
 						Object tool = toolBar.getSelectedTool();
 						Point2D newPoint = event.getPoint();
 						
-							if(theBounds != null){
+							if(theBounds != null&&!SwingUtilities.isRightMouseButton(event)){
 									Node n = (Node) clickedObject;
 									n.setY(newPoint.getY());
 									n.setX(newPoint.getX());

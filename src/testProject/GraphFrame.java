@@ -25,6 +25,7 @@ public class GraphFrame extends JFrame {
 	JMenu menu, file;
 	JMenuItem shop, clearShop;
 	
+	
 	public GraphFrame(final Graph graph) {
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,6 +82,8 @@ public class GraphFrame extends JFrame {
 			}
 		});
 		menu.add(clearShop);
+		
+			
 		
 	}
 

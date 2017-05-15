@@ -10,27 +10,18 @@ import testProject.*;
  * A circular node that is filled with a color.
  */
 public class CircleNode implements Node {
-	Board b;
-	Wire w;
-	
+
 	private double x;
 	private double y;
 	private double size;
 	private Color color;
 	private static final int DEFAULT_SIZE = 20;
 	public CircleNode(Color aColor) {
-		b = new Board(3);
-		w = new Wire(4);
-		size = (b.size)*DEFAULT_SIZE;
+
+		size = DEFAULT_SIZE;
 		x = 0;
 		y = 0;
 		color = aColor;
-	}
-	public Board getBoard(){
-		return b;
-	}
-	public Wire getWire() {
-		return w;
 	}
 
 	public Object clone() {
@@ -78,6 +69,12 @@ public class CircleNode implements Node {
 	@Override
 	public double getY() {
 		return y;
+	}
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
