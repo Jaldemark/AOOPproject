@@ -2,6 +2,8 @@ package app;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import testProject.Node;
@@ -60,6 +62,27 @@ public class TriangleNode implements Node {
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x, y, size, size);
 		
+	}
+	@Override
+	public boolean contains(Point2D aPoint) {
+		Rectangle2D square = new Rectangle2D.Double(x, y, size, size);
+		return square.contains(aPoint);
+	}
+	@Override
+	public void setX(double x) {
+		this.x=x;	
+	}
+	@Override
+	public void setY(double y) {
+		this.y=y;
+	}
+	@Override
+	public double getX() {	
+		return x;
+	}
+	@Override
+	public double getY() {
+		return y;
 	}
 	
 }

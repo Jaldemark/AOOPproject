@@ -12,6 +12,12 @@ import testProject.*;
 public class CircleNode implements Node {
 	Board b;
 	Wire w;
+	
+	private double x;
+	private double y;
+	private double size;
+	private Color color;
+	private static final int DEFAULT_SIZE = 20;
 	public CircleNode(Color aColor) {
 		b = new Board(3);
 		w = new Wire(4);
@@ -52,10 +58,28 @@ public class CircleNode implements Node {
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x, y, size, size);
 	}
+	@Override
+	public boolean contains(Point2D aPoint) {
+		Rectangle2D cir = new Rectangle2D.Double(x, y, size, size);
+		return cir.contains(aPoint);
+	}
+	@Override
+	public void setX(double x) {
+		this.x=x;	
+	}
+	@Override
+	public void setY(double y) {
+		this.y=y;
+	}
+	@Override
+	public double getX() {	
+		return x;
+	}
+	@Override
+	public double getY() {
+		return y;
+	}
 
-	private double x;
-	private double y;
-	private double size;
-	private Color color;
-	private static final int DEFAULT_SIZE = 20;
+	
+	
 }

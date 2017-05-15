@@ -37,8 +37,7 @@ public class GraphFrame extends JFrame {
 		panel = new GraphPanel(toolBar, graph);
 		scrollPane = new JScrollPane(panel);
 		theArea = new JTextArea(20,10);
-		
-		//theArea.setText(Shop.getShop());
+	
 		this.add(theArea, BorderLayout.EAST);
 		this.add(toolBar, BorderLayout.NORTH);
 		this.add(scrollPane, BorderLayout.CENTER);
@@ -51,6 +50,10 @@ public class GraphFrame extends JFrame {
 			}
 		});
 	}
+	
+	/**
+	 * Setting up the MenuBar
+	 */
 	public void setUpMenu(){
 		menuBar= new JMenuBar();
 		setJMenuBar(menuBar);

@@ -17,4 +17,10 @@ public interface Node extends Cloneable {
 	Rectangle2D getBounds();
 
 	Object clone();
+	boolean contains(Point2D aPoint);
+	//Object getArea();
+	void setX(double x);
+	void setY(double y);
+	double getX();
+	double getY();
 }

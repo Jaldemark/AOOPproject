@@ -33,6 +33,21 @@ public class Shop {
 		}
 	
 	}
+	public static void removeFromShop(Node a){
+		
+		for(int i=0;i<s.length;i++){
+			switch(i){
+			case 0: itemCount[i] =itemCount[i]- a.getBoard().get();
+					s[i] = "Boards: " + itemCount[i];
+					
+					break;
+			case 1: itemCount[i] = itemCount[i] - a.getWire().get();
+					s[i] = "Wires: " + itemCount[i];
+					
+					break;
+			}	
+		}
+	}
 	/**
 	 * 
 	 * @return all items in our shop

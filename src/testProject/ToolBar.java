@@ -12,6 +12,11 @@ public class ToolBar extends JPanel {
 		group = new ButtonGroup();
 		tools = new ArrayList<Object>();
 
+		JToggleButton toggle = new JToggleButton();
+		group.add(toggle);
+		add(toggle);
+		toggle.setSelected(true);
+		tools.add(null);
 		Node[] nodeTypes = graph.getNodePrototypes();
 		for (Node n : nodeTypes)
 			add(n);
