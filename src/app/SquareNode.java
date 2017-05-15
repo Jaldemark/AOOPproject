@@ -1,14 +1,21 @@
 package app;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.geom.*;
 
 import java.awt.geom.*;
+import java.util.List;
+import java.awt.event.*;
+import javax.swing.*;
 
 import testProject.*;
 
 public class SquareNode implements Node {
 	Board b;
 	Wire w;
+	int draggedAtX,draggedAtY;
 	public SquareNode(Color aColor) {
 		b = new Board(1);
 		w = new Wire(2);
@@ -16,13 +23,29 @@ public class SquareNode implements Node {
 		x = 0;
 		y = 0;
 		color = aColor;
+	
+		 
 	}
+
+	
 
 	public Board getBoard(){
 		return b;
 	}
 	public Wire getWire() {
 		return w;
+	}
+	public double getX(){
+		return x;
+	}
+	public double getY(){
+		return y;
+	}
+	public void setX(double x){
+		this.x=x;
+	}
+	public void setY(double y){
+		this.y=y;
 	}
 	public Object clone() {
 		try {
@@ -55,6 +78,12 @@ public class SquareNode implements Node {
 	private double size;
 	private Color color;
 	private static final int DEFAULT_SIZE = 20;
+	
+	@Override
+	public boolean contains(Point2D thePoint) {
+		Rectangle2D square = new Rectangle2D.Double(x, y, size, size);
+		return square.contains(thePoint);
+	}
 	
 	
 }

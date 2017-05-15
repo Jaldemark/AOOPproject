@@ -8,9 +8,17 @@ public class Board {
 		price = 15*(size);
 		this.size=size;	
 	}
+	/**
+	 * To get the amouont of 
+	 * @return the amount of wires
+	 */
 	public int get(){
 		return size;
 	}
+	/**
+	 * To get the price of the board
+	 * @return the price of the board
+	 */
 	public int getPrice(){
 		return price;
 	}
